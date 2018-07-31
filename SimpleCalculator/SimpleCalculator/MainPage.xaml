@@ -3,12 +3,65 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:SimpleCalculator"
              x:Class="SimpleCalculator.MainPage">
+    
+    <!--page-level defined resources-->
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <x:Double x:Key="fontSizeLabel">48</x:Double>
+            
+            <x:Double x:Key="fontSizeButton">36</x:Double>
+            <x:Int32 x:Key="borderRadiusButton">0</x:Int32>
+            <Color x:Key="bgColorButtonNumeric">White</Color>
+            <Color x:Key="bgColorButtonOperator">#FFA400</Color>
 
-    <StackLayout>
-        <!-- Place new controls here -->
-    	<Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
-    </StackLayout>
+            <Color x:Key="bgColorGrid">Black</Color> <!--slower when used vs specify Black directly-->
+            <x:Double x:Key="spacing">1</x:Double>
+
+            <Style x:Key="StyleButton" TargetType="Button">
+                <Setter Property="BorderRadius" Value="{StaticResource borderRadiusButton}" />
+                <Setter Property="FontSize" Value="{StaticResource fontSizeButton}" />
+            </Style>
+            
+            <Style x:Key="StyleButtonNumeric" TargetType="Button" BasedOn="{StaticResource StyleButton}">
+                <Setter Property="BackgroundColor" Value="{StaticResource bgColorButtonNumeric}" />
+            </Style>
+
+            <Style x:Key="StyleButtonOperator" TargetType="Button" BasedOn="{StaticResource StyleButton}">
+                <Setter Property="BackgroundColor" Value="{StaticResource bgColorButtonOperator}" />
+            </Style>
+
+            <Style x:Key="StyleGrid" TargetType="Grid">
+                <Setter Property="BackgroundColor" Value="{StaticResource bgColorGrid}" />
+                <Setter Property="ColumnSpacing" Value="{StaticResource spacing}" />
+                <Setter Property="RowSpacing" Value="{StaticResource spacing}" />
+            </Style>
+            
+            <!--preferred not to use implicit style to avoid confusion to other devs / more readable-->
+            
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid Style="{StaticResource StyleGrid}">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        
+        <Button Grid.Row="0" Grid.Column="0" Style="{StaticResource StyleButtonNumeric}" Text="1"></Button>
+        <Button Grid.Row="0" Grid.Column="1" Style="{StaticResource StyleButtonOperator}" Text="X"></Button>
+        <Button Grid.Row="0" Grid.Column="2" Text="C" Style="{StaticResource StyleButton}" BackgroundColor="#808080"></Button>
+    </Grid>
 
 </ContentPage>
