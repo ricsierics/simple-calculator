@@ -50,7 +50,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <Grid Style="{StaticResource StyleGrid}" Padding="5,0">
+    <Grid Style="{StaticResource StyleGrid}">
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>

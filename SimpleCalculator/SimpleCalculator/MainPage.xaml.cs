@@ -66,6 +66,7 @@ namespace SimpleCalculator
             lblResult.Text = "0";
             operation = string.Empty;
             clickCounter = 0;
+            isComputed = false;
         }
     }
 }
