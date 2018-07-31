@@ -13,6 +13,9 @@
             <x:Int32 x:Key="borderRadiusButton">0</x:Int32>
             <Color x:Key="bgColorButtonNumeric">White</Color>
             <Color x:Key="bgColorButtonOperator">#FFA400</Color>
+            <Color x:Key="textColorGeneric">White</Color>
+            <!--<TextAlignment x:Key="textAlignmentVerticalLabel">TextAlignment.Center</TextAlignment>
+            <TextAlignment x:Key="textAlignmentHorizontalLabel">TextAlignment.End</TextAlignment>-->
 
             <Color x:Key="bgColorGrid">Black</Color> <!--slower when used vs specify Black directly-->
             <x:Double x:Key="spacing">1</x:Double>
@@ -28,8 +31,18 @@
 
             <Style x:Key="StyleButtonOperator" TargetType="Button" BasedOn="{StaticResource StyleButton}">
                 <Setter Property="BackgroundColor" Value="{StaticResource bgColorButtonOperator}" />
+                <Setter Property="TextColor" Value="{StaticResource textColorGeneric}"/>
             </Style>
 
+            <Style x:Key="StyleLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource textColorGeneric}" />
+                <Setter Property="FontSize" Value="{StaticResource fontSizeLabel}" />
+                <!--<Setter Property="VerticalTextAlignment" Value="{StaticResource textAlignmentVerticalLabel}" />
+                <Setter Property="HorizontalTextAlignment" Value="{StaticResource textAlignmentHorizontalLabel}" />-->
+                <Setter Property="VerticalTextAlignment" Value="Center"></Setter>
+                <Setter Property="HorizontalTextAlignment" Value="End"></Setter>
+            </Style>
+            
             <Style x:Key="StyleGrid" TargetType="Grid">
                 <Setter Property="BackgroundColor" Value="{StaticResource bgColorGrid}" />
                 <Setter Property="ColumnSpacing" Value="{StaticResource spacing}" />
@@ -43,6 +56,8 @@
 
     <Grid Style="{StaticResource StyleGrid}">
         <Grid.RowDefinitions>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
@@ -54,14 +69,29 @@
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        
-        
-        <Button Grid.Row="0" Grid.Column="0" Style="{StaticResource StyleButtonNumeric}" Text="1"></Button>
-        <Button Grid.Row="0" Grid.Column="1" Style="{StaticResource StyleButtonOperator}" Text="X"></Button>
-        <Button Grid.Row="0" Grid.Column="2" Text="C" Style="{StaticResource StyleButton}" BackgroundColor="#808080"></Button>
+
+        <Label Grid.Row="0" Grid.ColumnSpan="4" Text="0" Style="{StaticResource StyleLabel}"></Label>
+        <Button Grid.Row="1" Grid.Column="0" Style="{StaticResource StyleButtonNumeric}" Text="7"></Button>
+        <Button Grid.Row="1" Grid.Column="1" Style="{StaticResource StyleButtonNumeric}" Text="8"></Button>
+        <Button Grid.Row="1" Grid.Column="2" Style="{StaticResource StyleButtonNumeric}" Text="9"></Button>
+        <Button Grid.Row="1" Grid.Column="3" Style="{StaticResource StyleButtonOperator}" Text="/"></Button>
+
+        <Button Grid.Row="2" Grid.Column="0" Style="{StaticResource StyleButtonNumeric}" Text="4"></Button>
+        <Button Grid.Row="2" Grid.Column="1" Style="{StaticResource StyleButtonNumeric}" Text="5"></Button>
+        <Button Grid.Row="2" Grid.Column="2" Style="{StaticResource StyleButtonNumeric}" Text="6"></Button>
+        <Button Grid.Row="2" Grid.Column="3" Style="{StaticResource StyleButtonOperator}" Text="X"></Button>
+
+        <Button Grid.Row="3" Grid.Column="0" Style="{StaticResource StyleButtonNumeric}" Text="1"></Button>
+        <Button Grid.Row="3" Grid.Column="1" Style="{StaticResource StyleButtonNumeric}" Text="2"></Button>
+        <Button Grid.Row="3" Grid.Column="2" Style="{StaticResource StyleButtonNumeric}" Text="3"></Button>
+        <Button Grid.Row="3" Grid.Column="3" Style="{StaticResource StyleButtonOperator}" Text="-"></Button>
+
+        <Button Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Style="{StaticResource StyleButtonNumeric}" Text="0"></Button>
+        <Button Grid.Row="4" Grid.Column="3" Style="{StaticResource StyleButtonOperator}" Text="+"></Button>
+
+        <Button Grid.Row="5" Grid.Column="0" Style="{StaticResource StyleButtonOperator}" BackgroundColor="#808080" Text="C"></Button>
+        <Button Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3" Style="{StaticResource StyleButtonOperator}" Text="="></Button>
     </Grid>
 
 </ContentPage>
